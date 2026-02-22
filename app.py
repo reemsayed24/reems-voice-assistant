@@ -57,7 +57,7 @@ with left:
     if audio_bytes and hf_token:
         st.audio(audio_bytes, format="audio/wav")
         with st.spinner("Listening..."):
-            user_text = transcribe_audio(audio_bytes)
+            user_text = transcribe_audio(audio_bytes, hf_token)
         st.markdown(f'<div class="status-box">🗣️ <b>You said:</b><br>{user_text}</div>', unsafe_allow_html=True)
         with st.spinner("ReeM is thinking..."):
             ai_reply = get_response(user_text, st.session_state.history, hf_token)
@@ -79,4 +79,5 @@ with right:
         if role == "user":
             st.markdown(f'<div class="user-msg">👤 &nbsp;{msg}</div>', unsafe_allow_html=True)
         else:
+
             st.markdown(f'<div class="ai-msg">🤍 &nbsp;{msg}</div>', unsafe_allow_html=True)

@@ -1,13 +1,13 @@
 # 🎙️ ReeM's Voice Assistant
 
-A real-time AI-powered voice assistant built with Streamlit, Whisper STT, Mistral LLM, and gTTS.
+A real-time AI-powered voice assistant built with Streamlit, Groq Whisper STT, Llama LLM, and gTTS.
 
 ---
 
 ## ✨ Features
 
-- 🎤 **Speech to Text** — Records your voice and converts it to text using OpenAI Whisper
-- 🧠 **AI Brain** — Understands your question and generates a smart response using Mistral-7B
+- 🎤 **Speech to Text** — Records your voice and converts it to text using Groq Whisper Large V3
+- 🧠 **AI Brain** — Understands your question and generates a smart response using Llama 3.1
 - 🔊 **Text to Speech** — Converts the AI response back to voice using gTTS
 - 💬 **Conversation Memory** — Remembers the last 14 messages for natural conversation flow
 - 🌍 **Multilingual** — Supports both English and Arabic
@@ -20,8 +20,8 @@ A real-time AI-powered voice assistant built with Streamlit, Whisper STT, Mistra
 | Layer | Technology |
 |-------|-----------|
 | Frontend | Streamlit |
-| Speech to Text | OpenAI Whisper (small) |
-| Language Model | Mistral-7B-Instruct via HuggingFace |
+| Speech to Text | Groq Whisper Large V3 |
+| Language Model | Llama 3.1 8B via Groq API |
 | Text to Speech | gTTS |
 | Deployment | Streamlit Cloud |
 
@@ -45,9 +45,9 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-### 4. Add your HuggingFace token in the sidebar
+### 4. Add your Groq API key in the sidebar
 
-Get your free token from [huggingface.co](https://huggingface.co/settings/tokens)
+Get your free API key from [console.groq.com](https://console.groq.com)
 
 ---
 
@@ -55,9 +55,9 @@ Get your free token from [huggingface.co](https://huggingface.co/settings/tokens
 ```
 reems-voice-assistant/
 ├── app.py              # Main Streamlit application
-├── stt_module.py       # Speech to Text using Whisper
+├── stt_module.py       # Speech to Text using Groq Whisper
 ├── tts_module.py       # Text to Speech using gTTS
-├── llm_module.py       # AI responses using Mistral
+├── llm_module.py       # AI responses using Llama 3.1 via Groq
 ├── requirements.txt    # Project dependencies
 └── README.md
 ```
@@ -66,7 +66,7 @@ reems-voice-assistant/
 
 ## 🌐 Live Demo
 
-[Click here to try the app](https://YOUR_APP_NAME.streamlit.app)
+[Click here to try the app]([https://reems-voice-assistant-numjpkyrkybmyyf9eurmyf.streamlit.app](https://reems-voice-assistant-2rprpkurtxhbmqfjczadnz.streamlit.app/))
 
 ---
 

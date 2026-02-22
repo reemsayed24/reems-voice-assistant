@@ -174,17 +174,3 @@ with right:
             st.markdown(f'<div class="user-msg">👤 &nbsp;{msg}</div>', unsafe_allow_html=True)
         else:
             st.markdown(f'<div class="ai-msg">🤍 &nbsp;{msg}</div>', unsafe_allow_html=True)
-```
-
----
-
-### requirements.txt
-```
-streamlit
-openai-whisper
-gtts
-huggingface_hub
-audio-recorder-streamlit
-soundfile
-numpy
-torch

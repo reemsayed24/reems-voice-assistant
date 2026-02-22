@@ -18,13 +18,12 @@ h1 { font-family: 'Playfair Display', serif; color: #6b2737; font-size: 2.2rem; 
 .status-box { background-color: #ede8e2; border: 1px solid #d6cfc7; border-radius: 12px; padding: 14px 18px; color: #6b5c52; font-size: 0.9rem; margin-top: 12px; }
 .stButton > button { background-color: #6b2737; color: white; border: none; border-radius: 10px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
 .stButton > button:hover { background-color: #85303f; }
-.stSelectbox label, .stTextInput label { color: #6b5c52; font-size: 0.85rem; }
 .empty-state { color: #b0a398; font-size: 0.9rem; font-style: italic; text-align: center; margin-top: 40px; }
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown("<h1>🎙️ ReeM's Voice Assistant</h1>", unsafe_allow_html=True)
-st.markdown('<p class="subtitle">Whisper STT &nbsp;·&nbsp; Mistral LLM &nbsp;·&nbsp; gTTS</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">Whisper STT &nbsp;·&nbsp; Llama LLM &nbsp;·&nbsp; gTTS</p>', unsafe_allow_html=True)
 
 with st.sidebar:
     st.markdown("### ⚙️ Settings")
@@ -54,13 +53,13 @@ with left:
         icon_size="2x"
     )
 
-    if audio_bytes and hf_token:
+    if audio_bytes and api_key:
         st.audio(audio_bytes, format="audio/wav")
         with st.spinner("Listening..."):
-            user_text = transcribe_audio(audio_bytes, hf_token)
+            user_text = transcribe_audio(audio_bytes, api_key)
         st.markdown(f'<div class="status-box">🗣️ <b>You said:</b><br>{user_text}</div>', unsafe_allow_html=True)
         with st.spinner("ReeM is thinking..."):
-            ai_reply = get_response(user_text, st.session_state.history, hf_token)
+            ai_reply = get_response(user_text, st.session_state.history, api_key)
         st.session_state.history.append({"role": "user", "content": user_text})
         st.session_state.history.append({"role": "assistant", "content": ai_reply})
         st.session_state.chat_log.append(("user", user_text))
@@ -68,8 +67,8 @@ with left:
         with st.spinner("Generating voice..."):
             audio_reply = text_to_speech(ai_reply, lang=lang)
         st.audio(audio_reply, format="audio/mp3", autoplay=True)
-    elif audio_bytes and not hf_token:
-        st.warning("Please add your HuggingFace token in the sidebar.")
+    elif audio_bytes and not api_key:
+        st.warning("Please add your Groq API key in the sidebar.")
 
 with right:
     st.markdown("#### 💬 Conversation")
@@ -79,7 +78,4 @@ with right:
         if role == "user":
             st.markdown(f'<div class="user-msg">👤 &nbsp;{msg}</div>', unsafe_allow_html=True)
         else:
-
             st.markdown(f'<div class="ai-msg">🤍 &nbsp;{msg}</div>', unsafe_allow_html=True)
-
-

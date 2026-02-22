@@ -1,25 +1,17 @@
 import requests
-import time
 
-def transcribe_audio(audio_bytes, hf_token):
-    API_URL = "https://api-inference.huggingface.co/models/openai/whisper-base"
-    headers = {"Authorization": f"Bearer {hf_token}"}
-    
-    for attempt in range(5):
-        response = requests.post(API_URL, headers=headers, data=audio_bytes)
-        
-        if response.status_code == 200:
-            try:
-                result = response.json()
-                if "text" in result:
-                    return result["text"]
-            except Exception:
-                pass
-        
-        if response.status_code == 503:
-            time.sleep(10)
-            continue
-            
-        time.sleep(5)
-    
-    return "Could not transcribe. Please try again."
+def transcribe_audio(audio_bytes, api_key):
+    headers = {
+        "Authorization": f"Bearer {api_key}"
+    }
+    files = {
+        "file": ("audio.wav", audio_bytes, "audio/wav"),
+        "model": (None, "whisper-large-v3"),
+    }
+    response = requests.post(
+        "https://api.groq.com/openai/v1/audio/transcriptions",
+        headers=headers,
+        files=files
+    )
+    result = response.json()
+    return result.get("text", "Could not transcribe. Please try again.")

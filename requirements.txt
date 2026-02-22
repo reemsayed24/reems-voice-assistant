@@ -1,0 +1,8 @@
+streamlit
+openai-whisper
+gtts
+huggingface_hub
+audio-recorder-streamlit
+soundfile
+numpy
+torch

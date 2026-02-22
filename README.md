@@ -66,7 +66,7 @@ reems-voice-assistant/
 
 ## 🌐 Live Demo
 
-[Click here to try the app]([https://reems-voice-assistant-numjpkyrkybmyyf9eurmyf.streamlit.app](https://reems-voice-assistant-2rprpkurtxhbmqfjczadnz.streamlit.app/))
+[Click here to try the app](https://reems-voice-assistant-2rprpkurtxhbmqfjczadnz.streamlit.app/)
 
 ---
 
@@ -78,3 +78,4 @@ This project was built as part of the **Uneeq Interns** program task:
 ---
 
 Made with 🤍 by ReeM
+

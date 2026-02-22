@@ -28,7 +28,7 @@ st.markdown('<p class="subtitle">Whisper STT &nbsp;·&nbsp; Mistral LLM &nbsp;·
 
 with st.sidebar:
     st.markdown("### ⚙️ Settings")
-    hf_token = st.text_input("HuggingFace Token", type="password", placeholder="hf_xxxxxxxxxxxx")
+    api_key = st.text_input("Groq API Key", type="password", placeholder="gsk_xxxxxxxxxxxx")
     lang = st.selectbox("Voice Response Language", ["en", "ar"])
     st.markdown("---")
     if st.button("🗑️ Clear Conversation"):
@@ -81,3 +81,4 @@ with right:
         else:
 
             st.markdown(f'<div class="ai-msg">🤍 &nbsp;{msg}</div>', unsafe_allow_html=True)
+
